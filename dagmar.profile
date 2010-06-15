@@ -21,7 +21,7 @@ function dagmar_profile_modules() {
  */
 function dagmar_profile_details() {
   return array(
-    'name' => 'Drupal',
+    'name' => 'Dagmar',
     'description' => 'Featured based install profile.'
   );
 }
@@ -61,6 +61,8 @@ function dagmar_profile_tasks(&$task, $url) {
   install_add_role('administrator');
   install_add_role('moderator');
   install_add_role('editor');
+  module_disable(array('install_profile_api'));
+
 
   // Default page to not be promoted and have comments disabled.
   variable_set('node_options_page', array('status'));
@@ -73,6 +75,7 @@ function dagmar_profile_tasks(&$task, $url) {
 
   // Update the menu router information.
   menu_rebuild();
+  drupal_set_message(st('Please, now select the <strong>!features</strong> for your site.', array('!features' => l(st('Features'), 'admin/build/features'))));
 }
 
 /**
