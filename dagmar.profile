@@ -58,6 +58,10 @@ function dagmar_profile_task_list() {
 function dagmar_profile_tasks(&$task, $url) {
   install_include(dagmar_profile_modules());
 
+  install_add_role('administrator');
+  install_add_role('moderator');
+  install_add_role('editor');
+
   // Default page to not be promoted and have comments disabled.
   variable_set('node_options_page', array('status'));
   variable_set('comment_page', COMMENT_NODE_DISABLED);
